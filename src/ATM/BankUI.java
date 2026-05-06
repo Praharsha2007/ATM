@@ -8,13 +8,9 @@ import javafx.stage.Stage;
 import java.util.*;
 public class BankUI extends Application {
     private Account acc;
-    private List<Customer> customers = new ArrayList<>();
     private ATM atm = new ATM();
     @Override
     public void start(Stage stage) {
-        customers.add(new Customer("Harsha", "C001", new Account("12345", 1000, 1234)));
-        customers.add(new Customer("Rahul", "C002", new Account("67890", 2000, 5678)));
-        customers.add(new Customer("Anu", "C003", new Account("11111", 500, 1111)));
         showLoginScreen(stage);
     }
 
@@ -44,12 +40,7 @@ public class BankUI extends Application {
         stage.show();
     }
     private Account authenticate(int pin) {
-        for (Customer c : customers) {
-            if (c.getAccount().validatePin(pin)) {
-                return c.getAccount();
-            }
-        }
-        return null;
+    	return atm.authenticate(pin);
     }
     private void showTransactionScreen(Stage stage) {
         TextField amountField = new TextField();

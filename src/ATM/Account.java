@@ -17,16 +17,6 @@ public class Account {
         return this.pin == enteredPin;
     }
     
-    public String performTransaction(Transaction t) {
-        boolean success = t.execute(this);
-        if (success) {
-            transactions.add(t);
-            return "Transaction Successful";
-        } else {
-            return "Insufficient Balance";
-        }
-    }
-    
     public double getBalance() {
         return balance;
     }
